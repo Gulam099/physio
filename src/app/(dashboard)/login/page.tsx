@@ -202,7 +202,6 @@ export default function LoginComponent() {
               autoComplete="email"
               autoFocus
               value={values.email}
-              onChange={handleChange("email")}
               error={!!errors.email}
               helperText={errors.email}
               sx={{ mb: 2 }}
@@ -217,7 +216,6 @@ export default function LoginComponent() {
               autoComplete="current-password"
               type={values.showPassword ? "text" : "password"}
               value={values.password}
-              onChange={handleChange("password")}
               error={!!errors.password}
               helperText={errors.password}
               InputProps={{
