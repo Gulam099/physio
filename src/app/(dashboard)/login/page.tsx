@@ -266,7 +266,7 @@ export default function LoginComponent() {
             </Button>
             <Box sx={{ textAlign: "center" }}>
               <Typography variant="body2" color="text.secondary">
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <Link
                   href="#"
                   variant="body2"
