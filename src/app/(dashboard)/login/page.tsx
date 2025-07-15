@@ -109,7 +109,7 @@ export default function LoginComponent() {
     return valid;
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
 
     if (validateForm()) {
