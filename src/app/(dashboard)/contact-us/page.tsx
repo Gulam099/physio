@@ -23,7 +23,7 @@ const ContactUs = () => {
           </Typography>
 
           <Typography variant="body1" align="center" color="textSecondary" sx={{ mb: 4 }}>
-            We'd love to hear from you. Feel free to reach out with any questions, appointment requests, or feedback.
+            We&apos;d love to hear from you. Feel free to reach out with any questions, appointment requests, or feedback.
           </Typography>
 
           <Grid container spacing={4}>
