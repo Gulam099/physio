@@ -73,11 +73,8 @@ export default function LoginComponent() {
     }
   }, [status, session, router]);
 
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-    // Clear error when typing
-    setErrors({ ...errors, [prop]: "" });
-  };
+  const handleChange = () => {};
+
 
   const handleClickShowPassword = () => {
     setValues({
