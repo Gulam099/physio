@@ -50,7 +50,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" sx={{backgroundColor: "#0a2540"}}>
+    <AppBar position="static" sx={{ backgroundColor: "#0a2540" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
@@ -148,7 +148,12 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, ml: 3 }}>
-                <Avatar alt={session?.user?.name} src={session?.user?.image} />
+                <Avatar
+                  alt={session?.user?.name || undefined}
+                  src={session?.user?.image || undefined}
+                >
+                  {session?.user?.name?.charAt(0)}
+                </Avatar>
               </IconButton>
             </Tooltip>
             <Typography>{session?.user?.name}</Typography>
