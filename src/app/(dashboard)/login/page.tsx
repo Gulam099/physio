@@ -48,7 +48,6 @@ const SocialButton = styled(Button)(({ theme }) => ({
 type SnackbarSeverity = 'success' | 'error' | 'info' | 'warning';
 
 export default function LoginComponent() {
-  const { data: session, status } = useSession();
   const router = useRouter();
 
   const [values, setValues] = useState({
@@ -71,13 +70,6 @@ export default function LoginComponent() {
     message: "",
     severity: "success",
   });
-
-  // Redirect to dashboard if user is authenticated
-  useEffect(() => {
-    if (status === "authenticated" && session) {
-      router.push("/");
-    }
-  }, [status, session, router]);
 
   // ✅ FIXED: handleChange with correct types
   const handleChange =

@@ -10,7 +10,7 @@ const AboutUs = () => {
           About Us
         </Typography>
 
-        <Typography variant="body1" align="center" color="textSecondary" sx={{ mb: 6, maxWidth: 800, mx: 'auto' }}>
+        <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 6, maxWidth: 800, mx: 'auto' }}>
           At <strong>RestoreMotion Physiotherapy</strong>, we are dedicated to empowering you through movement. Our
           team of licensed physiotherapists offers personalized care designed to help you recover, prevent injury, and
           maintain long-term wellness.
@@ -21,7 +21,7 @@ const AboutUs = () => {
             <Typography variant="h6" color="primary" gutterBottom>
               Our Approach
             </Typography>
-            <Typography variant="body2" color="textSecondary">
+            <Typography variant="body2" color="text.secondary">
               We use evidence-based techniques including manual therapy, targeted exercises, and lifestyle guidance to
               support your recovery. Every treatment plan is tailored to your individual goals and condition.
             </Typography>
@@ -40,7 +40,7 @@ const AboutUs = () => {
                 'Welcoming and friendly environment',
               ].map((text, index) => (
                 <ListItem key={index} sx={{ pl: 0 }}>
-                  <ListItemText primary={text} primaryTypographyProps={{ variant: 'body2', color: 'textSecondary' }} />
+                  <ListItemText primary={text} primaryTypographyProps={{ variant: 'body2', color: 'text.secondary' }} />
                 </ListItem>
               ))}
             </List>

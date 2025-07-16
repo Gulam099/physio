@@ -28,7 +28,6 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
-  const { data: session } = useSession();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -146,7 +145,7 @@ function ResponsiveAppBar() {
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            {/* <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, ml: 3 }}>
                 <Avatar
                   alt={session?.user?.name || undefined}
@@ -155,8 +154,7 @@ function ResponsiveAppBar() {
                   {session?.user?.name?.charAt(0)}
                 </Avatar>
               </IconButton>
-            </Tooltip>
-            <Typography>{session?.user?.name}</Typography>
+            </Tooltip> */}
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"

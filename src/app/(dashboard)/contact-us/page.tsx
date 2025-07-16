@@ -33,7 +33,7 @@ const ContactUs = () => {
                 <PhoneIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
                 Phone
               </Typography>
-              <Link href="tel:+919458404336" underline="none" color="textPrimary">
+              <Link href="tel:+919458404336" underline="none" color="text.primary">
                 +91 9458404336
               </Link>
 
@@ -41,7 +41,7 @@ const ContactUs = () => {
                 <EmailIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
                 Email
               </Typography>
-              <Link href="mailto:sheikhshadab352@gmail.com" underline="none" color="textPrimary">
+              <Link href="mailto:sheikhshadab352@gmail.com" underline="none" color="text.primary">
                 sheikhshadab352@gmail.com
               </Link>
             </Grid>
