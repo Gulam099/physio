@@ -45,10 +45,12 @@ const SocialButton = styled(Button)(({ theme }) => ({
   },
 }));
 
+type SnackbarSeverity = 'success' | 'error' | 'info' | 'warning';
+
 export default function LoginComponent() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  
+
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -60,7 +62,11 @@ export default function LoginComponent() {
     password: "",
   });
 
-  const [snackbar, setSnackbar] = useState({
+  const [snackbar, setSnackbar] = useState<{
+    open: boolean;
+    message: string;
+    severity: SnackbarSeverity;
+  }>({
     open: false,
     message: "",
     severity: "success",
@@ -73,8 +79,13 @@ export default function LoginComponent() {
     }
   }, [status, session, router]);
 
-  const handleChange = () => {};
-
+  // ✅ FIXED: handleChange with correct types
+  const handleChange =
+    (prop: "email" | "password") =>
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValues({ ...values, [prop]: event.target.value });
+      setErrors({ ...errors, [prop]: "" });
+    };
 
   const handleClickShowPassword = () => {
     setValues({
@@ -87,7 +98,6 @@ export default function LoginComponent() {
     let valid = true;
     const newErrors = { email: "", password: "" };
 
-    // Email validation
     if (!values.email) {
       newErrors.email = "Email is required";
       valid = false;
@@ -96,7 +106,6 @@ export default function LoginComponent() {
       valid = false;
     }
 
-    // Password validation
     if (!values.password) {
       newErrors.password = "Password is required";
       valid = false;
@@ -109,18 +118,17 @@ export default function LoginComponent() {
     return valid;
   };
 
-  const handleSubmit = async (event: { preventDefault: () => void; }) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (validateForm()) {
       try {
-        // Handle email/password login
         const result = await signIn("credentials", {
           redirect: false,
           email: values.email,
           password: values.password,
         });
-        
+
         if (result?.error) {
           setSnackbar({
             open: true,
@@ -133,7 +141,6 @@ export default function LoginComponent() {
             message: "Login successful! Redirecting to dashboard...",
             severity: "success",
           });
-          // Will redirect via useEffect when session updates
         }
       } catch (error) {
         console.error("Login error:", error);
@@ -202,6 +209,7 @@ export default function LoginComponent() {
               autoComplete="email"
               autoFocus
               value={values.email}
+              onChange={handleChange("email")} // ✅ added back
               error={!!errors.email}
               helperText={errors.email}
               sx={{ mb: 2 }}
@@ -216,6 +224,7 @@ export default function LoginComponent() {
               autoComplete="current-password"
               type={values.showPassword ? "text" : "password"}
               value={values.password}
+              onChange={handleChange("password")} // ✅ added back
               error={!!errors.password}
               helperText={errors.password}
               InputProps={{

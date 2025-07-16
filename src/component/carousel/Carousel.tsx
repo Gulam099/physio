@@ -1,30 +1,30 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { 
-  Box, 
-  IconButton, 
-  useTheme, 
+import { useState, useEffect, useRef } from "react";
+import {
+  Box,
+  IconButton,
+  useTheme,
   Paper,
   Stack,
   Fade,
-  Container
-} from '@mui/material';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+  Container,
+} from "@mui/material";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 const images = [
-  '/images/image1.JPG',
-  '/images/image2.JPG',
-  '/images/image3.JPG',
+  "/images/image1.JPG",
+  "/images/image2.JPG",
+  "/images/image3.JPG",
 ];
 
 export default function MUICarousel() {
   const [current, setCurrent] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const theme = useTheme();
-  const timerRef = useRef(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Auto-slide functionality
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function MUICarousel() {
         setCurrent((prev) => (prev + 1) % images.length);
       }, 4000); // Change slide every 4 seconds
     }
-    
+
     return () => {
       if (timerRef.current) {
         clearInterval(timerRef.current);
@@ -63,7 +63,7 @@ export default function MUICarousel() {
     }
   };
 
-  const goToSlide = (index) => {
+  const goToSlide = (index: number) => {
     setCurrent(index);
     // Reset the timer when manually changing slides
     if (timerRef.current) {
@@ -73,33 +73,33 @@ export default function MUICarousel() {
   };
 
   return (
-    <Box 
-      sx={{ 
-        width: '100%',
-        position: 'relative',
-        overflow: 'hidden',
+    <Box
+      sx={{
+        width: "100%",
+        position: "relative",
+        overflow: "hidden",
         bgcolor: theme.palette.background.default,
       }}
     >
       {/* Full width container with empty space on sides */}
-      <Container 
+      <Container
         maxWidth={false}
         disableGutters
         sx={{
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          px: { xs: 0, sm: 4, md: 8, lg: 12 }
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          px: { xs: 0, sm: 4, md: 8, lg: 12 },
         }}
       >
-        <Paper 
+        <Paper
           elevation={8}
           sx={{
-            position: 'relative',
-            width: '100%',
-            maxWidth: '1000px',
+            position: "relative",
+            width: "100%",
+            maxWidth: "1000px",
             borderRadius: 3,
-            overflow: 'hidden',
+            overflow: "hidden",
           }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -107,13 +107,13 @@ export default function MUICarousel() {
           {/* Image Container */}
           <Box
             sx={{
-              position: 'relative',
-              height: { xs: '300px', sm: '400px', md: '500px' },
-              width: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              overflow: 'hidden',
+              position: "relative",
+              height: { xs: "300px", sm: "400px", md: "500px" },
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
             }}
           >
             {images.map((img, index) => (
@@ -122,10 +122,10 @@ export default function MUICarousel() {
                 in={index === current}
                 timeout={800}
                 style={{
-                  display: index === current ? 'block' : 'none',
-                  height: '100%',
-                  width: '100%',
-                  position: 'absolute',
+                  display: index === current ? "block" : "none",
+                  height: "100%",
+                  width: "100%",
+                  position: "absolute",
                 }}
               >
                 <Box
@@ -133,9 +133,9 @@ export default function MUICarousel() {
                   src={img}
                   alt={`Slide ${index}`}
                   sx={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
                   }}
                 />
               </Fade>
@@ -144,34 +144,34 @@ export default function MUICarousel() {
             {/* Centered Controls */}
             <Box
               sx={{
-                position: 'absolute',
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
+                position: "absolute",
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
                 padding: 2,
               }}
             >
               <IconButton
                 onClick={prevSlide}
                 sx={{
-                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                  color: 'white',
-                  '&:hover': {
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                  color: "white",
+                  "&:hover": {
+                    backgroundColor: "rgba(0, 0, 0, 0.7)",
                   },
                 }}
               >
                 <ArrowBackIosNewIcon />
               </IconButton>
-              
+
               <IconButton
                 onClick={nextSlide}
                 sx={{
-                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                  color: 'white',
-                  '&:hover': {
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                  color: "white",
+                  "&:hover": {
+                    backgroundColor: "rgba(0, 0, 0, 0.7)",
                   },
                 }}
               >
@@ -180,25 +180,28 @@ export default function MUICarousel() {
             </Box>
 
             {/* Indicator Dots */}
-            <Stack 
-              direction="row" 
+            <Stack
+              direction="row"
               spacing={1}
               sx={{
-                position: 'absolute',
+                position: "absolute",
                 bottom: 16,
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
               }}
             >
               {images.map((_, index) => (
-                <IconButton 
+                <IconButton
                   key={index}
                   onClick={() => goToSlide(index)}
                   size="small"
                   sx={{
-                    color: index === current ? theme.palette.primary.main : 'rgba(255, 255, 255, 0.7)',
-                    '&:hover': {
+                    color:
+                      index === current
+                        ? theme.palette.primary.main
+                        : "rgba(255, 255, 255, 0.7)",
+                    "&:hover": {
                       color: theme.palette.primary.light,
                     },
                   }}
@@ -210,7 +213,7 @@ export default function MUICarousel() {
           </Box>
         </Paper>
       </Container>
-      
+
       {/* Full width navigation (optional - alternative approach) */}
       {/* Uncomment this section if you want navigation arrows outside the main carousel
       <Box sx={{ 
