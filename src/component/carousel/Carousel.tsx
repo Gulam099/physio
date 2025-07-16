@@ -15,9 +15,9 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 const images = [
-  "/images/image1.JPG",
-  "/images/image2.JPG",
-  "/images/image3.JPG",
+  "/images/image1.jpg",
+  "/images/image2.jpg",
+  "/images/image3.jpg",
 ];
 
 export default function MUICarousel() {
